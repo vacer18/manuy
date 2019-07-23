@@ -1,0 +1,25 @@
+{
+  "name": "manuy",
+  "version": "1.0.0",
+  "description": "Web App de Control de Prestamos ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/73497941/Manuy.git"
+  },
+  "author": "EF Systemas E.I.R.L",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/73497941/Manuy/issues"
+  },
+  "homepage": "https://github.com/73497941/Manuy#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/73497941/Manuy.git"
+    "url": "git+https://github.com/vacer18/manuy.git"
   },
   "author": "EF Systemas E.I.R.L",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/73497941/Manuy/issues"
+    "url": "https://github.com/vacer18/manuy/issues"
   },
-  "homepage": "https://github.com/73497941/Manuy#readme",
+  "homepage": "https://github.com/vacer18/manuy#readme",
   "dependencies": {
     "express": "^4.17.1"
   },

@@ -2,7 +2,8 @@
 exports.homeManuy = (req,res) =>{
 
     res.render('home',{
-        namePage: 'HOME'
+        namePage: 'MANUY | HOME'
     });
 
 };
+

@@ -1,0 +1,39 @@
+//- Incio del Logo
+ul#accordionSidebar.navbar-nav.bg-gradient-manuy.sidebar.sidebar-dark.accordion.menu-color
+    a.sidebar-brand.d-flex.align-items-center.justify-content-center.mt-3(href='/')
+        .container
+            .row
+                .col-sm
+                    .sidebar-brand-icon
+                        i.icon-manuy
+                    
+            .row
+                .col-sm
+                    .sidebar-brand-text.mx-3.TF-logo
+                        | MANUY
+                    //- fin del logo
+
+    hr.sidebar-divider.my-0
+
+    .sidebar-heading.mt-2.titulos-menu.titulo-menu
+        |PRESTAMOS
+    //- Inicio de Resumen
+    li.nav-item
+        a.nav-link.titulo-menu(href='charts.html')
+            i.fas.fa-chart-line.text-gray-100
+            span Resumen 
+    //- Inicio de Proveedores
+    li.nav-item
+        a.nav-link.collapsed.titulo-menu(href='#', data-toggle='collapse', data-target='#proveedores', aria-expanded='true', aria-controls='proveedores')
+            i.fas.fa-store-alt.text-gray-100
+            span PROVEEDORES
+        #proveedores.collapse(aria-labelledby='headingProveedores', data-parent='#accordionSidebar')
+            .bg-white.py-2.collapse-inner.rounded.titulo-menu
+                h6.collapse-header.TF-logo Lista de Proveedores:
+                a.collapse-item(href='buttons.html') GRUPO DELTRON 
+                a.collapse-item(href='cards.html') COMPUDISKET
+
+    hr.sidebar-divider.my-0
+
+    .text-center.d-none.d-md-inline.mt-3
+        button#sidebarToggle.rounded-circle.border-0

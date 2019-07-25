@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        include partials/header  
+    body#page-top
+
+        #wrapper
+            include layout/menu
+
+            #content-wrapper.d-flex.flex-column
+                #content
+                    include layout/header
+
+                    .container-fluid
+                        block contenido
+                footer.sticky-footer.bg-white
+                    .container.my-auto
+                        .copyright.text-center.my-auto
+                            span.tf-myriad
+                                | Copyright 
+                                span.tf-bungee © EF SYSTEMAS E.I.R.L
+                                
+
+        a.scroll-to-top.rounded(href='#page-top')
+            i.fas.fa-angle-up
+
+                            
+
+        include partials/footer
+        

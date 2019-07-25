@@ -1,0 +1,38 @@
+@font-face{
+    font-family: 'bungee';
+    src: url(../fonts/Bungee-Regular.woff);
+}
+
+@font-face{
+    font-family: 'myriad';
+    src: url(../fonts/MyriadPro-Bold.woff);
+}
+
+
+.bg-gradient-manuy {
+    background-color: #5F4B8B;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(10%,rgb(149, 117, 218)),to(rgb(95, 75, 139)));
+    background-image: linear-gradient(180deg,rgb(149, 117, 218) 10%,rgb(95, 75, 139) 100%);
+    background-size: cover;
+}
+
+.titulo-menu{
+    font-family: 'bungee';   
+}
+
+.TF-logo{
+    font-family: 'bungee';
+    color: #FAC668;
+}
+
+.subtitulos-menu{
+    font-family: 'myriad'; 
+}
+
+.tf-bungee{
+    font-family: 'bungee';  
+}
+
+.tf-myriad{
+    font-family: 'myriad';  
+}

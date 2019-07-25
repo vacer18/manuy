@@ -7,6 +7,7 @@ const homeController = require('../controllers/homeController');
 module.exports = function () {
 
     router.get('/', homeController.homeManuy);
+   
 
     return router;
     

@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
+// importar express-calidator
+const {body} = require("express-validator/check")
 
 // Importando los controladores
 const homeController = require('../controllers/homeController');
 const proveedorController = require('../controllers/proveedorController');
+const kardexController = require('../controllers/kardexController');
 
 module.exports = function () {
     // Redirecciona Home Page
     router.get('/', homeController.homeManuy);
-<<<<<<< HEAD
-
-    // View nuevo Proveedor
-    router.get('/resumen-proveedores', proveedorController.resumenProveedores);
-=======
-    router.get('/kardex', proveedorController.kardex);
->>>>>>> ff26ecdebe5b0139d978e8e4774c9921a18a4ab6
+    router.get('/kardex', kardexController.kardex);
+    router.post('/nuevoProveedor',
+        body("nombreProveedor").not().isEmpty().trim().escape(), 
+        proveedorController.nuevoProveedor);
    
 
     return router;

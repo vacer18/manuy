@@ -1,3 +1,61 @@
 extends layout
 
 block contenido
+        .row
+            .col-sm
+                h3.tf-bungee.m-3 #{titlePage}
+            .col-sm.text-right
+                button.btn.btn-warning.btn-icon-split.m-3(type="button" data-toggle="modal" data-target="#newSupplier")
+                    span.icon.text-white-50
+                        i.fas.fa-plus
+                    span.text.tf-myriad Agregar Proveedor
+        .card.shadow.mb-4
+            .card-header.mb-4
+                h6.m-0.font-weight-bold.text-center.Titulo-Card PROVEEDORES
+            .card-body
+                .table-responsive
+                    table#tblKardex.table.table-striped(style='width:100%')
+                        thead
+                            tr
+                                th Proveedores                 
+                                th Deuda                 
+                                th Amortizacion             
+                                th Saldo                
+                        tbody
+                            tr
+                                td GRUPO DELTRON                  
+                                td 1290.09                 
+                                td 1087.13               
+                                td 202.96              
+                        tfoot.subTitle
+                            tr
+                                th Total                 
+                                th 30,760.60                 
+                                th 30,064.99             
+                                th 695.61
+block modalPage
+    #newSupplier.modal.fade(tabindex='-1' role='dialog' aria-labelledby='Agregar Nuevo Proveedor' aria-hidden='true')
+        .modal-dialog.modal-lg
+            .modal-content
+              .modal-header
+                h5#newSupplierTitle.modal-title.tf-bungee Agregar Nuevo Proveedor
+                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+              form(action="/nuevoProveedor" method="post")  
+                .modal-body  
+                        .conteiner
+                            .row.tf-myriad
+                                .col-sm-4
+                                    h5 Nombre del Proveedor
+                                .col-sm-6
+                                    input.form-control(type='text' placeholder='Nombre Proveedor' name="nombreProveedor")
+                                    if errores
+                                        each error in errores
+                                            span.text-danger= error.mensaje                                            
+                .modal-footer
+                    input.btn.btn-munay01(type="submit" value="Agregar")
+    
+block footerConteiner
+    script(src='/js/DT_kardex.js')
+
+        

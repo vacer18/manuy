@@ -1,15 +1,34 @@
-<<<<<<< HEAD
-exports.resumenProveedores = (req,res) =>{
+const Proveedor = require("../models/Proveedor");
 
-    res.render('resumenProveedores',{
-        namePage : 'MANUY | Resumen Proveedor',
-        titulePage: 'Resumen - EF Systemas' 
+
+
+exports.nuevoProveedor = async (req,res) =>{
+    
+    const { nombreProveedor } = req.body;
+
+    let errores = [];
+
+    if (!nombreProveedor) {
+        errores.push({mensaje: "Agregar un nombre al Proveedor"});
+    }
+
+    // Si hay errores 
+    if (errores.length>0) {
+        res.render("kardex",{
+            namePage: 'MANUY | KARDEX',
+            titlePage : "KARDEX",
+            errores
+
+        })
         
-=======
-exports.kardex = (req,res) => {
+    }else{
+        
+        const proveedor = await Proveedor.create({nombreProveedor});
+        res.redirect("/kardex");
+            
 
-    res.render('kardex',{
-        namePage: 'MANUY | KARDEX'
->>>>>>> ff26ecdebe5b0139d978e8e4774c9921a18a4ab6
-    });
-};
+    }
+
+
+
+}

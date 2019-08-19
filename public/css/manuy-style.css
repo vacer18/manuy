@@ -36,3 +36,24 @@
 .tf-myriad{
     font-family: 'myriad';  
 }
+
+.Titulo-Card{
+    font-family: 'bungee';
+    color: #5F4B8B;
+}
+
+.subTitle>tr>th{
+    color: #5F4B8B;
+}
+
+.btn-munay01{
+    color: #fff;
+    background-color: rgb(133, 106, 192);
+    border-color: rgb(133, 106, 192);
+}
+
+.btn-munay01:hover{
+    color: #fff;
+    background-color: #5F4B8B;
+    border-color: #5F4B8B;
+}

@@ -108,9 +108,16 @@ $("#btnGuardar").click(function(e){
     success: function(data){
       $("#formProveedor").trigger("reset");
       recargarProveedores();
-      $("#listaproveedores").prepend('<a class="collapse-item" href="/proveedor/'+data.url+'">'+enviarPerfil.nombreProveedor+'</a>');
-        
-  }
+      if (data.estado) {
+        $("#listaproveedores").prepend('<a class="collapse-item" href="/proveedor/'+data.url+'">'+enviarPerfil.nombreProveedor+'</a>');
+        $("#errores").empty();
+      } else {
+        $("#errores").empty();
+        $("#errores").prepend('<span class="text-danger">'+data.mensaje+'</span>');
+
+      }
+     
+    },
 
   });
 

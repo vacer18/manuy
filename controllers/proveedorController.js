@@ -4,24 +4,22 @@ const Proveedor = require("../models/Proveedor");
 
 exports.nuevoProveedor = async (req,res) =>{
 
-    
+    const proveedores = await Proveedor.findAll();
     
     const { nombreProveedor } = req.body;
 
-    let errores = [];
+    let errores = "";
 
     if (!nombreProveedor) {
-        errores.push({mensaje: "Agregar un nombre al Proveedor"});
+        errores="Agregar un nombre al Proveedor";
     }
+
+    
 
     // Si hay errores 
     if (errores.length>0) {
-        res.render("kardex",{
-            namePage: 'MANUY | KARDEX',
-            titlePage : "KARDEX",
-            errores
-
-        })
+        
+        res.status(200).json({mensaje: errores, estado: false})
         
     }else{
         
@@ -34,7 +32,8 @@ exports.nuevoProveedor = async (req,res) =>{
 
         res.status(200).json({
             message: 'Se agrego correctamente',
-            url : proveedor.url
+            url : proveedor.url,
+            estado: true
             
         });
 

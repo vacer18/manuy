@@ -46,9 +46,8 @@ block modalPage
                                     h5 Nombre del Proveedor
                                 .col-sm-6
                                     input#nombrePro.form-control(type='text' placeholder='Nombre Proveedor')
-                                    if errores
-                                        each error in errores
-                                            span.text-danger= error.mensaje                                            
+                                    #errores
+                                                                               
                 .modal-footer
                     input#btnGuardar.btn.btn-munay01(type="submit" value="Agregar")
     

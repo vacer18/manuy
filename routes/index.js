@@ -12,9 +12,13 @@ module.exports = function () {
     // Redirecciona Home Page
     router.get('/', homeController.homeManuy);
     router.get('/kardex', kardexController.kardex);
-    router.post('/nuevoProveedor',
+    router.post('/proveedor/nuevoProveedor',
         body("nombreProveedor").not().isEmpty().trim().escape(), 
         proveedorController.nuevoProveedor);
+    router.post('/kardexResumen',kardexController.kardexResumen);
+    router.get('/proveedor/:url', proveedorController.proveedorURL);
+
+
    
 
     return router;

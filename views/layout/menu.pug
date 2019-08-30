@@ -30,8 +30,11 @@ ul#accordionSidebar.navbar-nav.bg-gradient-manuy.sidebar.sidebar-dark.accordion.
         #proveedores.collapse(aria-labelledby='headingProveedores', data-parent='#accordionSidebar')
             .bg-white.py-2.collapse-inner.rounded.titulo-menu
                 h6.collapse-header.TF-logo Lista de Proveedores:
-                a.collapse-item(href='grupoDeltron.html') GRUPO DELTRON 
-                a.collapse-item(href='cards.html') COMPUDISKET
+                if(proveedores.length)
+                    each proveedor in proveedores
+                        a.collapse-item(href=`/proveedor/${proveedor.url}`) #{proveedor.nombreProveedor}
+                #listaproveedores
+                
                 
 
 

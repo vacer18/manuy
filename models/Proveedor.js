@@ -20,8 +20,10 @@ const Proveedor = db.define('proveedor',{
 },{
     hooks:{
         beforeCreate(proveedor){
+            const estado = 1;
             const url = slug(proveedor.nombreProveedor).toLowerCase();
             proveedor.url = `${url}-${shortid.generate()}`;
+            proveedor.estado = estado;
         }
     }
 });

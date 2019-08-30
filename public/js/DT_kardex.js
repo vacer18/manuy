@@ -10,6 +10,8 @@ function recargarProveedores() {
       .ajax.reload(null, false);
   }
 
+
+
 function listaProveedores() {
 
     if ($.fn.DataTable.isDataTable(tblKardex)) {
@@ -17,7 +19,7 @@ function listaProveedores() {
           .DataTable()
           .destroy();
       }
-
+      var path = $(location).attr("href");
     $(tblKardex).DataTable({
         language: {
             sProcessing: "Procesando...",
@@ -44,7 +46,74 @@ function listaProveedores() {
               sSortDescending:
                 ": Activar para ordenar la columna de manera descendente"
             }
-          }
+          },
+          "ajax":{
+            "data":"json",
+            "type": "POST",
+            "url": "/kardexResumen"
+          },
+          "columns": [
+            { "data": "nombreProveedor" },
+            { "data": "deuda" },
+            { "data": "amortizacion" },
+            { "data": "saldo" },
+            { "data": "url",
+              bSortable:  false,
+              mRender : function (data,type,row) {
+                var viewHTML = "";
+                var initDiv = "";
+                var endDiv = "";
+
+                initDiv += "<div class='text-center'>";
+                viewHTML += "<a href='/proveedor/"+data+"' class='btn btn-warning'  title='Ir al Proveedor'><i class='fas fa-eye'></i></a>";
+                endDiv += "</div>";
+
+                return initDiv+viewHTML+endDiv;
+                
+              }
+          
+                }
+        ]
     })
     
 }
+
+
+// Agregar nuevo Proveedor
+var btnAgregar = document.querySelector("#btnAgregar");
+
+btnAgregar.addEventListener("click", function (e) {
+  e.preventDefault();
+  var modalProveedor = $("#modalProveedor");
+  modalProveedor.find("form").attr("action", "/proveedor/nuevoProveedor");
+  modalProveedor.find("#btnGuardar").val("Agregar");
+  
+});
+
+// Boton Guardar los datos
+
+$("#btnGuardar").click(function(e){
+
+  var frm = $("#modalProveedor form");
+  
+  var enviarPerfil = {
+    nombreProveedor: $("#nombrePro").val(),
+  };
+  
+  $.ajax({
+    type: "post",
+    url: frm.attr("action"),
+    data: enviarPerfil,
+    dataType: 'json',
+    success: function(data){
+      $("#formProveedor").trigger("reset");
+      recargarProveedores();
+      $("#listaproveedores").prepend('<a class="collapse-item" href="/proveedor/'+data.url+'">'+enviarPerfil.nombreProveedor+'</a>');
+        
+  }
+
+  });
+
+e.preventDefault();
+});
+

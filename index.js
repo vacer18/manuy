@@ -3,6 +3,9 @@ const routes = require('./routes/index');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+// Helpers con alguans funciones
+const helpers = require("./helpers");
+
 // Conexion a la db
 const db = require('./config/db');
 
@@ -29,6 +32,12 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use(express.static('public'));
+
+// Pasar var dump a la aplicacion
+app.use((req,res,next)=>{
+    res.locals.vardump = helpers.vardump;
+    next();
+});
 
 // Habilitar body Parser leer datos de los formularios
 app.use(bodyParser.urlencoded({extended: true}));

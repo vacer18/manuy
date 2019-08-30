@@ -1,0 +1,55 @@
+extends layout
+
+block contenido
+        .row
+            .col-sm
+                h3.tf-bungee.m-3 #{titlePage} - SALDO : 202.96 
+            .col-sm.text-right
+                button.btn.btn-warning.btn-icon-split.m-3(type="button" data-toggle="modal" data-target="#newSupplier")
+                    span.icon.text-white-50
+                        i.fas.fa-plus
+                    span.text.tf-myriad Agregar Deposito
+                button.btn.btn-warning.btn-icon-split.m-3(type="button" data-toggle="modal" data-target="#newSupplier")
+                    span.icon.text-white-50
+                        i.fas.fa-plus
+                    span.text.tf-myriad Agregar Factura
+        .card.shadow.mb-4
+            .card-header.mb-4
+                h6.m-0.font-weight-bold.text-center.Titulo-Card DATOS DEL DEPOSITO
+            .card-body
+                .table-responsive
+                    table#tblDepositos.table.table-striped(style='width:100%')
+                        thead
+                            tr
+                                th Fecha                 
+                                th N° de Deposito                 
+                                th Monto             
+                                         
+                                    
+                        tfoot.subTitle
+                            tr
+                                th(colspan="2") Total:                                 
+                                th 1087.13  
+
+        .card.shadow.mb-4
+            .card-header.mb-4
+                h6.m-0.font-weight-bold.text-center.Titulo-Card DATOS DE LA FACTURA
+            .card-body
+                .table-responsive
+                    table#tblFacturas.table.table-striped(style='width:100%')
+                        thead
+                            tr
+                                th Fecha                 
+                                th N° de Factura                 
+                                th Dias de Credito
+                                th Fecha de Vencimiento
+                                th Dias Faltantes
+                                th Monto                                       
+                        tfoot.subTitle  
+                            tr
+                                th(colspan="5") Total:                  
+                                th 1290.09         
+
+block footerConteiner
+    script(src='/js/DT_Deposito.js')
+    script(src='/js/DT_Factura.js')

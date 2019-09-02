@@ -4,12 +4,15 @@ block contenido
         .row
             .col-sm
                 h3.tf-bungee.m-3 #{titlePage} - SALDO : 202.96 
+                    button#btnEditar.btn(type="button" data-toggle="modal" data-target="#modalProveedor") 
+                        i.fas.fa-edit.text-success
+                //- pre= vardump(proveedor) 
             .col-sm.text-right
-                button.btn.btn-warning.btn-icon-split.m-3(type="button" data-toggle="modal" data-target="#modalDeposito")
+                button#newDeposito.btn.btn-warning.btn-icon-split.m-3(type="button" data-toggle="modal" data-target="#modalProveedor")
                     span.icon.text-white-50
                         i.fas.fa-plus
                     span.text.tf-myriad Agregar Deposito
-                button.btn.btn-warning.btn-icon-split.m-3(type="button" data-toggle="modal" data-target="#modalFactura")
+                button#newFactura.btn.btn-warning.btn-icon-split.m-3(type="button" data-toggle="modal" data-target="#modalProveedor")
                     span.icon.text-white-50
                         i.fas.fa-plus
                     span.text.tf-myriad Agregar Factura
@@ -40,39 +43,39 @@ block contenido
                         thead
                             tr
                                 th Fecha                 
-                                th N° de Factura                 
+                                th N° de Factura 
+                                th Monto                 
                                 th Dias de Credito
                                 th Fecha de Vencimiento
-                                th Dias Faltantes
-                                th Monto                                       
+                                th Dias Faltantes                                      
                         tfoot.subTitle  
                             tr
                                 th(colspan="5") Total:                  
                                 th 1290.09
 block modalPage
-    #modalDeposito.modal.fade(tabindex='-1' role='dialog' aria-labelledby='Agregar Nuevo Deposito' aria-hidden='true')
+    #modalProveedor.modal.fade(tabindex='-1' role='dialog' aria-labelledby='Editar Proveedor' aria-hidden='true')
         .modal-dialog.modal-lg
             .modal-content
               .modal-header
-                h5#modalDepositoTitle.modal-title.tf-bungee Nuevo Deposito
+                h5#modalProveedorTitle.modal-title.tf-bungee Editar Proveedor
                 button.close(type='button' data-dismiss='modal' aria-label='Close')
                     span(aria-hidden='true') &times;
-              form#formDeposito 
+              form#formProveedor 
                 .modal-body  
                         .conteiner
                             .row.tf-myriad
                                 .col-sm-4
+                                    input#idProveedor(type="hidden" value=`${proveedor.id}`) 
                                     h5 Nombre del Proveedor
                                 .col-sm-6
-                                    input#nombrePro.form-control(type='text' placeholder='Nombre Proveedor')
-                                    if errores
-                                        each error in errores
-                                            span.text-danger= error.mensaje                                            
+                                    input#nombrePro.form-control(type='text' placeholder='Nombre Proveedor' value=`${proveedor.nombreProveedor}`) 
+                                    #errores
+                                                                               
                 .modal-footer
-                    input#btnGuardar.btn.btn-munay01(type="submit" value="Agregar")
+                    input#btnGuardar.btn.btn-munay01(type="submit" value="Agregar")               
     
          
 
 block footerConteiner
-    script(src='/js/DT_Deposito.js')
-    script(src='/js/DT_Factura.js')
+    script(src='/js/DT_proveedor.js')
+    

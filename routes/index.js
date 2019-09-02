@@ -17,6 +17,9 @@ module.exports = function () {
         proveedorController.nuevoProveedor);
     router.post('/kardexResumen',kardexController.kardexResumen);
     router.get('/proveedor/:url', proveedorController.proveedorURL);
+    router.post('/proveedor/editar/:id',
+        body("nombreProveedor").not().isEmpty().trim().escape(), 
+        proveedorController.editarProveedor);
 
 
    

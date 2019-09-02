@@ -44,12 +44,14 @@ exports.nuevoProveedor = async (req,res) =>{
 }
 
 exports.proveedorURL= async(req,res,next) => {
-    const proveedores = await Proveedor.findAll();
-    const proveedor =  await Proveedor.findOne({
+    const proveedoresPromise =  Proveedor.findAll();
+    const proveedorPromise =   Proveedor.findOne({
         where:{
             url : req.params.url
         }
     });
+
+    const [proveedores, proveedor] = await Promise.all([proveedoresPromise, proveedorPromise]); 
 
     if (!proveedor) return next();
     
@@ -60,5 +62,36 @@ exports.proveedorURL= async(req,res,next) => {
         proveedores
 
     })
+
+};
+
+exports.editarProveedor = async(req,res,next) =>{
+    
+    const {nombreProveedor} = req.body;
+
+    let errores = "";
+
+    if (!nombreProveedor) {
+        errores="Agregar un nuevo nombre al Proveedor";
+    }
+
+    
+    // Si hay errores 
+    if (errores.length>0) {
+        
+        res.status(200).json({mensaje: errores, estado: false})
+        
+    }else{
+        
+       await Proveedor.update({nombreProveedor:nombreProveedor},{where:{id: req.params.id}});
+      
+
+        res.status(200).json({
+            message: 'Se modifico correctamente',
+            estado: true
+        });
+
+    }
+
 
 };

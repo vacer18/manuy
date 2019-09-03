@@ -18,6 +18,7 @@
   "homepage": "https://github.com/vacer18/manuy#readme",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "concurrently": "^4.1.2",
     "express": "^4.17.1",
     "express-validator": "^6.1.1",
     "jquery": "^3.4.1",
@@ -28,6 +29,10 @@
     "slug": "^1.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "nodemon": "^1.19.1",
+    "webpack": "^4.39.3"
   }
 }

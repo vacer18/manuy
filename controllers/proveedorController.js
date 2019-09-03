@@ -4,7 +4,7 @@ const Proveedor = require("../models/Proveedor");
 
 exports.nuevoProveedor = async (req,res) =>{
 
-    const proveedores = await Proveedor.findAll();
+    await Proveedor.findAll({where:{estado:1}});
     
     const { nombreProveedor } = req.body;
 
@@ -44,7 +44,7 @@ exports.nuevoProveedor = async (req,res) =>{
 }
 
 exports.proveedorURL= async(req,res,next) => {
-    const proveedoresPromise =  Proveedor.findAll();
+    const proveedoresPromise = Proveedor.findAll({where:{estado:1}});
     const proveedorPromise =   Proveedor.findOne({
         where:{
             url : req.params.url
